@@ -26,7 +26,7 @@ The Job Recommendation Backend Service is a RESTful API designed to suggest rele
    pip install -r requirements.txt
 ## Usage
 To run the application, use the following command:
-- In settings.py file change database credintials related to postgreSQL database
+- Update the database credentials in the settings.py file to connect to your PostgreSQL database
 1. We have to make the migrations
    ```bash
    python manage.py makemigrations
@@ -44,18 +44,59 @@ All endpoints are prefixed with the base URL:
 
 ### Endpoints
 
-#### 1. **POST api/register**
-#### 2. **POST api/token**
-#### 2. **POST api/token/refresh**
-#### 2. **POST api/populate**
-#### 2. **POST api/recommend**
-This endpoint accepts user profile data and returns recommended job postings.
+1. **POST /api/register**
+   - **Description**: This endpoint registers a new user.
+   - **Request**:
+     - **Content-Type**: `application/json`
+     - **Request Body**: JSON object containing user registration data.
 
-- **Request**
-  - **Content-Type**: `application/json`
-  - **Request Body**: JSON object containing user Registration.
-  
-- The entire API tested by using postman and published over it
-- Check out: https://documenter.getpostman.com/view/27536473/2sAXxMgtUo
+2. **POST /api/token**
+   - **Description**: This endpoint generates an access token for the user.
+   - **Request**:
+     - **Content-Type**: `application/json`
+     - **Request Body**: JSON object containing user credentials.
+
+3. **POST /api/token/refresh**
+   - **Description**: This endpoint refreshes the access token.
+   - **Request**:
+     - **Content-Type**: `application/json`
+     - **Request Body**: JSON object containing the refresh token.
+
+4. **POST /api/populate**
+   - **Description**: This endpoint populates the database with mock job postings.
+   - **Request**:
+     - **Content-Type**: `application/json`
+     - **Request Body**: JSON object containing mock job data.
+
+5. **POST /api/recommend**
+   - **Description**: This endpoint accepts user profile data and returns recommended job postings.
+   - **Request**:
+     - **Content-Type**: `application/json`
+     - **Request Body**: JSON object containing user profile data.
+     ```json
+     {
+       "name": "John Doe",
+       "skills": ["JavaScript", "Node.js", "React"],
+       "experience_level": "Intermediate",
+       "preferences": {
+         "desired_roles": ["Software Engineer", "Full Stack Developer"],
+         "locations": ["San Francisco", "Remote"],
+         "job_type": "Full-Time"
+       }
+     }
+     ```
+
+### Testing the API
+The entire API has been tested using Postman. You can find the API documentation and details here:  
+[Postman Documentation](https://documenter.getpostman.com/view/27536473/2sAXxMgtUo)
+### License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+## Notes
+- Ensure that the Postman documentation link is functional and directs users to the right resource.
+- Keep the API documentation updated as your endpoints evolve or new features are added.
+- If you have specific details about the request body and responses for each endpoint, you may want to expand on those sections under API Documentation.
+- Feel free to modify any part of this to better fit your project needs! Let me know if there’s anything else you need help with!
+
+
 
    
