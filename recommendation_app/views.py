@@ -58,7 +58,7 @@ class JobRecommendationView(APIView):
 
             # Sort jobs by skill score in descending order
             recommended_jobs.sort(key=lambda x: x[1], reverse=True)
-            top_recommendations = [job for job, _ in recommended_jobs[:5]]
+            top_recommendations = [job for job, _ in recommended_jobs]
 
             output = self.format_job_recommendations(top_recommendations)
             return output if output else [{"message": "No suitable job recommendations found."}]
